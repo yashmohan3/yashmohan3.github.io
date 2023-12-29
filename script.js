@@ -10,6 +10,9 @@ function sendInvite(response) {
 function moveButton() {
     const noButton = document.querySelector('#buttonContainer button:last-child');
 
+    // Reset button position
+    noButton.style.transform = 'translateX(0)';
+
     // Calculate random position within a limited range
     const minMove = -50; // Minimum movement to the left
     const maxMove = 50; // Maximum movement to the right
