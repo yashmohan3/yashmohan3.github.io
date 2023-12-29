@@ -10,24 +10,19 @@ function sendInvite(response) {
 function moveButton() {
     const noButton = document.querySelector('#buttonContainer button:last-child');
 
-    // Reset button position
-    noButton.style.transition = 'none'; // Disable transition for instant reset
-    noButton.style.transform = 'translateX(0)';
-    void noButton.offsetWidth; // Trigger reflow
-    noButton.style.transition = ''; // Re-enable transition
-
     // Calculate random position within a limited range
     const minMove = -50; // Minimum movement to the left
     const maxMove = 50; // Maximum movement to the right
     const randomMove = Math.floor(Math.random() * (maxMove - minMove + 1)) + minMove;
 
-    // Move the button after a short delay to allow the transition to reset
-    setTimeout(() => {
-        noButton.style.transform = `translateX(${randomMove}px)`;
-    }, 10);
+    // Apply the random movement
+    noButton.classList.add('moved');
+    noButton.style.transform = `translateX(${randomMove}%)`;
 
-    // Re-enable the button after the transition ends
-    noButton.addEventListener('transitionend', () => {
+    // Re-enable the button after a short delay
+    setTimeout(() => {
+        noButton.classList.remove('moved');
+        noButton.style.transform = 'translateX(0)';
         noButton.disabled = false;
-    }, { once: true });
+    }, 300); // Adjust the delay based on your preference
 }
