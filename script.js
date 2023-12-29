@@ -16,13 +16,14 @@ function moveButton() {
     const randomMove = Math.floor(Math.random() * (maxMove - minMove + 1)) + minMove;
 
     // Apply the random movement
-    noButton.classList.add('moved');
+    noButton.style.transition = 'transform 0.3s ease-in-out';
     noButton.style.transform = `translateX(${randomMove}%)`;
 
-    // Re-enable the button after a short delay
-    setTimeout(() => {
-        noButton.classList.remove('moved');
+    // Re-enable the button after the transition ends
+    noButton.disabled = true;
+    noButton.addEventListener('transitionend', () => {
+        noButton.style.transition = ''; // Reset transition
         noButton.style.transform = 'translateX(0)';
         noButton.disabled = false;
-    }, 300); // Adjust the delay based on your preference
+    }, { once: true });
 }
