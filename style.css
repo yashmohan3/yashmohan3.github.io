@@ -26,9 +26,15 @@ p.instructions {
     color: #333;
 }
 
+#buttonContainer {
+    display: flex;
+    justify-content: center;
+}
+
 button {
-    padding: 15px 30px;
-    font-size: 16px;
+    background-color: #4caf50;
+    color: #fff;
+    padding: 10px 20px;
     border: none;
     border-radius: 5px;
     cursor: pointer;
@@ -36,25 +42,13 @@ button {
     transition: all 0.3s ease-in-out;
 }
 
-.yes-button {
-    background-color: #4CAF50;
-    color: #fff;
-}
-
-.yes-button:hover {
+button:hover {
     background-color: #45a049;
-}
-
-.no-button {
-    background-color: #FF6F61;
-    color: #fff;
-}
-
-.no-button:hover {
-    background-color: #FF564B;
 }
 
 /* Add transition for button movement */
 button.moved {
-    transition: transform 0.3s ease-in-out;
+    position: relative;
+    left: 50px;
+    /* Adjust the amount of movement as needed */
 }
